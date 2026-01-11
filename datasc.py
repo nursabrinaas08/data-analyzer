@@ -84,6 +84,8 @@ if upload is not None:
       key="y_axis"
   )
 
+  grouped_data = data.groupby(x_axis)[y_axis].sum().reset_index()
+
   # Create Buttons For Diff Charts
   col1,col2,col3,col4 = st.columns(4)
   
@@ -125,9 +127,10 @@ if upload is not None:
 
   if barB:
     try:
+      grouped_data = data.groupby(x_axis)[y_axis].sum().reset_index()
       st.write("### Showing A Bar Graph")
       fig,ax = plt.subplots(figsize=(6, 3))
-      ax.bar(data[x_axis],data[y_axis])
+      ax.bar(grouped_data[x_axis],grouped_data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
       ax.set_title(f"Bar Graph Of {x_axis} Vs {y_axis}")
@@ -141,8 +144,8 @@ if upload is not None:
       st.write("### Showing A Pie Chart")
       fig,ax = plt.subplots(figsize=(6, 3))
       ax.pie(
-          data[y_axis],
-          labels=data[x_axis],
+          grouped_data[y_axis],
+          labels=grouped_data[x_axis],
           autopct='%1.1f%%',
           startangle=0
       )
@@ -156,3 +159,4 @@ if upload is not None:
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
