@@ -63,7 +63,7 @@ if upload is not None:
   selCol = st.multiselect("Choose Columns",data.columns.tolist())
 
   if selCol:
-    st.dataframe(data[selCol].head(20))
+    st.dataframe(data[selCol].head(100))
   else:
     st.info("No Columns Selected. Showing Full Dataset")
     st.dataframe(data.head())
@@ -71,8 +71,17 @@ if upload is not None:
   st.write("### Data Visualization")
   st.write("Select **Columns** For Data Visualization")
   columns = data.columns.tolist()
-  x_axis = st.selectbox("Select Column For X-Axis / Label",options=columns)
-  y_axis = st.selectbox("Select Column For Y-Axis / Data",options=columns)
+  x_axis = st.selectbox(
+      "Select Column For X-Axis / Label",
+      options=columns,
+      key="x_axis"
+  )
+
+  y_axis = st.selectbox(
+      "Select Column For Y-Axis / Data",
+      options=[col for col in columns if col != x_axis],
+      key="y_axis"
+  )
 
   # Create Buttons For Diff Charts
   col1,col2,col3,col4 = st.columns(4)
@@ -87,44 +96,57 @@ if upload is not None:
     pieB = st.button("Click Here to Generate Pie Chart")
 
   if lineB:
-    st.write("### Showing A Line Graph")
-    fig,ax = plt.subplots()
-    ax.plot(data[x_axis],data[y_axis])
-    ax.set_xlabel(x_axis)
-    ax.set_ylabel(y_axis)
-    ax.set_title(f"Line Graph Of {x_axis} Vs {y_axis}")
-    st.pyplot(fig)
+    try:
+      st.write("### Showing A Line Graph")
+      fig, ax = plt.subplots()
+      ax.plot(data[x_axis], data[y_axis])
+      ax.set_xlabel(x_axis)
+      ax.set_ylabel(y_axis)
+      ax.set_title(f"Line Graph Of {x_axis} Vs {y_axis}")
+      st.pyplot(fig)
+    except Exception as e:
+      st.error(f"Can't Generate Graph : {e}")
 
   if scatB:
-    st.write("### Showing A Scatter Graph")
-    fig,ax = plt.subplots()
-    ax.scatter(data[x_axis],data[y_axis])
-    ax.set_xlabel(x_axis)
-    ax.set_ylabel(y_axis)
-    ax.set_title(f"Scatter Graph Of {x_axis} Vs {y_axis}")
-    st.pyplot(fig)
+    try:
+      st.write("### Showing A Scatter Graph")
+      fig, ax = plt.subplots()
+      ax.scatter(data[x_axis], data[y_axis])
+      ax.set_xlabel(x_axis)
+      ax.set_ylabel(y_axis)
+      ax.set_title(f"Scatter Graph Of {x_axis} Vs {y_axis}")
+      st.pyplot(fig)
+    except Exception as e:
+      st.error(f"Can't Generate Graph : {e}")
+  
 
   if barB:
-    st.write("### Showing A Bar Graph")
-    fig,ax = plt.subplots()
-    ax.bar(data[x_axis],data[y_axis])
-    ax.set_xlabel(x_axis)
-    ax.set_ylabel(y_axis)
-    ax.set_title(f"Bar Graph Of {x_axis} Vs {y_axis}")
-    st.pyplot(fig)
+    try:
+      st.write("### Showing A Bar Graph")
+      fig,ax = plt.subplots()
+      ax.bar(data[x_axis],data[y_axis])
+      ax.set_xlabel(x_axis)
+      ax.set_ylabel(y_axis)
+      ax.set_title(f"Bar Graph Of {x_axis} Vs {y_axis}")
+      st.pyplot(fig)
+    except Exception as e:
+      st.error(f"Can't Generate Graph : {e}")
   
   if pieB:
-    st.write("### Showing A Pie Chart")
-    fig,ax = plt.subplots()
-    ax.pie(
-        data[y_axis],
-        labels=data[x_axis],
-        autopct='%1.1f%%',
-        startangle=90
-    )
-    ax.axis('equal')
-    ax.set_title(f"Pie Chart Of {y_axis} and {x_axis}")
-    st.pyplot(fig)
+    try:
+      st.write("### Showing A Pie Chart")
+      fig,ax = plt.subplots()
+      ax.pie(
+          data[y_axis],
+          labels=data[x_axis],
+          autopct='%1.1f%%',
+          startangle=90
+      )
+      ax.axis('equal')
+      ax.set_title(f"Pie Chart Of {y_axis} and {x_axis}")
+      st.pyplot(fig)
+    except Exception as e:
+      st.error(f"Can't Generate Graph : {e}")
   
 
 else:
