@@ -101,7 +101,7 @@ if upload is not None:
   if lineB:
     try:
       st.write("### Showing A Line Graph")
-      fig, ax = plt.subplots(figsize=(6, 3))
+      fig, ax = plt.subplots()
       ax.plot(data[x_axis], data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
@@ -114,7 +114,7 @@ if upload is not None:
   if scatB:
     try:
       st.write("### Showing A Scatter Graph")
-      fig, ax = plt.subplots(figsize=(4, 1))
+      fig, ax = plt.subplots()
       ax.scatter(data[x_axis], data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
@@ -129,7 +129,7 @@ if upload is not None:
     try:
       grouped_data = data.groupby(x_axis)[y_axis].sum().reset_index()
       st.write("### Showing A Bar Graph")
-      fig,ax = plt.subplots(figsize=(6, 3))
+      fig,ax = plt.subplots()
       ax.bar(grouped_data[x_axis],grouped_data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
@@ -142,7 +142,7 @@ if upload is not None:
   if pieB:
     try:
       st.write("### Showing A Pie Chart")
-      fig,ax = plt.subplots(figsize=(6, 3))
+      fig,ax = plt.subplots()
       ax.pie(
           grouped_data[y_axis],
           labels=grouped_data[x_axis],
@@ -159,4 +159,5 @@ if upload is not None:
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
 
