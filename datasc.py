@@ -105,8 +105,8 @@ if upload is not None:
       ax.set_title(f"Line Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : {e}")
-      st.warning('The Data Contains Alphanumeric value')
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
 
   if scatB:
     try:
@@ -118,8 +118,8 @@ if upload is not None:
       ax.set_title(f"Scatter Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : {e}")
-      st.warning('The Data Contains Alphanumeric value')
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
 
   if barB:
@@ -132,8 +132,8 @@ if upload is not None:
       ax.set_title(f"Bar Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : {e}")
-      st.warning('The Data Contains Alphanumeric value')
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
   if pieB:
     try:
@@ -149,8 +149,8 @@ if upload is not None:
       ax.set_title(f"Pie Chart Of {y_axis} and {x_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : {e}")
-      st.warning('The Data Contains Alphanumeric value')
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
 
 else:
