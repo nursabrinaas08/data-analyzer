@@ -111,7 +111,7 @@ if upload is not None:
   if scatB:
     try:
       st.write("### Showing A Scatter Graph")
-      fig, ax = plt.subplots(figsize=(6, 3))
+      fig, ax = plt.subplots(figsize=(4, 1))
       ax.scatter(data[x_axis], data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
@@ -143,7 +143,7 @@ if upload is not None:
           data[y_axis],
           labels=data[x_axis],
           autopct='%1.1f%%',
-          startangle=90
+          startangle=0
       )
       ax.axis('equal')
       ax.set_title(f"Pie Chart Of {y_axis} and {x_axis}")
@@ -155,6 +155,7 @@ if upload is not None:
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
 
 
 
