@@ -106,6 +106,7 @@ if upload is not None:
       st.pyplot(fig)
     except Exception as e:
       st.error(f"Can't Generate Graph : {e}")
+      st.warning('The Data Contains Alphanumeric value')
 
   if scatB:
     try:
@@ -118,6 +119,7 @@ if upload is not None:
       st.pyplot(fig)
     except Exception as e:
       st.error(f"Can't Generate Graph : {e}")
+      st.warning('The Data Contains Alphanumeric value')
   
 
   if barB:
@@ -131,6 +133,7 @@ if upload is not None:
       st.pyplot(fig)
     except Exception as e:
       st.error(f"Can't Generate Graph : {e}")
+      st.warning('The Data Contains Alphanumeric value')
   
   if pieB:
     try:
@@ -147,8 +150,10 @@ if upload is not None:
       st.pyplot(fig)
     except Exception as e:
       st.error(f"Can't Generate Graph : {e}")
+      st.warning('The Data Contains Alphanumeric value')
   
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
 
