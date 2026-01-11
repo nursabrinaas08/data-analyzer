@@ -63,7 +63,7 @@ if upload is not None:
   selCol = st.multiselect("Choose Columns",data.columns.tolist())
 
   if selCol:
-    st.dataframe(data[selCol].head(100))
+    st.dataframe(data[selCol].head(20))
   else:
     st.info("No Columns Selected. Showing Full Dataset")
     st.dataframe(data.head())
@@ -129,3 +129,4 @@ if upload is not None:
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
