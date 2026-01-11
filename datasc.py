@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import io
 import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Data Analysis",page_icon="📊",layout="wide")
 st.title("📊 Analyze Your Data")
@@ -39,7 +41,6 @@ if upload is not None:
   st.write("### Data Overview")
   st.write("Number of Rows : ",data.shape[0])
   st.write("Number of Columns : ", data.shape[1])
-  # st.write("Number of Missing Values : ",data.isnull().sum())   -->  this syntax will display the result in table manner
   st.write("Number of Missing Values : ",data.isnull().sum().sum())  # this syntax will compute the sum of sum for all columns
   st.write("Number of Duplicate Values : ",data.duplicated().sum())
 
@@ -155,7 +156,3 @@ if upload is not None:
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
-
-
-
-
