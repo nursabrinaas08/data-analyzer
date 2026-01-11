@@ -98,47 +98,47 @@ if upload is not None:
   if lineB:
     try:
       st.write("### Showing A Line Graph")
-      fig, ax = plt.subplots()
+      fig, ax = plt.subplots(figsize=(6, 3))
       ax.plot(data[x_axis], data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
       ax.set_title(f"Line Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric Value")
       st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
 
   if scatB:
     try:
       st.write("### Showing A Scatter Graph")
-      fig, ax = plt.subplots()
+      fig, ax = plt.subplots(figsize=(6, 3))
       ax.scatter(data[x_axis], data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
       ax.set_title(f"Scatter Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric Value")
       st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
 
   if barB:
     try:
       st.write("### Showing A Bar Graph")
-      fig,ax = plt.subplots()
+      fig,ax = plt.subplots(figsize=(6, 3))
       ax.bar(data[x_axis],data[y_axis])
       ax.set_xlabel(x_axis)
       ax.set_ylabel(y_axis)
       ax.set_title(f"Bar Graph Of {x_axis} Vs {y_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric Value")
       st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
   if pieB:
     try:
       st.write("### Showing A Pie Chart")
-      fig,ax = plt.subplots()
+      fig,ax = plt.subplots(figsize=(6, 3))
       ax.pie(
           data[y_axis],
           labels=data[x_axis],
@@ -149,11 +149,12 @@ if upload is not None:
       ax.set_title(f"Pie Chart Of {y_axis} and {x_axis}")
       st.pyplot(fig)
     except Exception as e:
-      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric value")
+      st.error(f"Can't Generate Graph : The Data Contains Alphanumeric Value")
       st.info("Files Might Containing Raw Data. Kindly Perform Data Cleaning First")
   
 
 else:
   st.info("Please Upload A CSV Or An Excel FIle To Get Started")
+
 
 
